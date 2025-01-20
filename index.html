@@ -85,28 +85,69 @@
      </div>
     <div class="form-container">
         <h1>Sign Up</h1>
-        <form>
+        <form action="http://localhost:5000/signup" method="post">
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullname" required><br>
-
+        
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required><br>
-
+        
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required><br>
-
+        
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" id="confirm-password" name="confirm-password" required><br>
-
+        
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required><br>
-
+        
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" required><br>
-
+        
             <input type="submit" value="Sign Up">
         </form>
+
+        <br>
+        <br>
+
+
     </div>
+
+
+    <script>
+        function done() {
+            
+            const fullname = document.getElementById("fullname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const phone = document.getElementById("phone").value;
+            const dob = document.getElementById("dob").value;
+    
+           
+            if (!fullname || !email || !password || !confirmPassword || !phone || !dob) {
+                alert("Please fill out all fields.");
+                return false; 
+            }
+    
+           
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false; 
+            }
+    
+           
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false; 
+            }
+    
+            
+            alert("Form submitted successfully");
+            return true;
+        }
+    </script>
 
 </body>
 </html>
